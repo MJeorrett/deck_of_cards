@@ -90,4 +90,19 @@ class TestDeck < MiniTest::Test
     expected = ['Ace', '2', '3', '4', '5' , '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King']
     assert_equal(expected, @deck.get_ordered_values())
   end
+
+  def test_correct_number_of_hands_dealt()
+    hands = @deck.deal_hands(3, 4)
+    number_of_hands = hands.length
+    assert_equal(3, number_of_hands)
+  end
+
+  def test_correct_number_of_cards_in_each_dealt_hand()
+    @deck.shuffle()
+    hands = @deck.deal_hands(3, 4)
+    for hand_index in (0..2)
+      assert_equal(4, hands[hand_index].number_of_cards)
+    end
+    hands.each { |hand| puts hand.to_bash_coloured_string;  puts "---"}
+  end
 end

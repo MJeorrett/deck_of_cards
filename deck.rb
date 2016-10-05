@@ -1,3 +1,5 @@
+require_relative("hand")
+
 class Deck
 
   SUITS = [
@@ -61,6 +63,20 @@ class Deck
     }.sort.map { |pair|
       pair[1]
     }
+  end
+
+  def deal_hands(hand_count, card_count)
+    hands = []
+    hand_count.times do
+      hands.push(Hand.new([]))
+    end
+
+    card_count.times do
+      for hand in hands
+        hand.add_card(deal_card)
+      end
+    end
+    return hands
   end
 
 end

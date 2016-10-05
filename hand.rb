@@ -1,3 +1,5 @@
+require('pry-byebug')
+
 class Hand
 
   def initialize(cards)
@@ -28,6 +30,24 @@ class Hand
     return @cards.map { |card|
       card.to_bash_coloured_string
     }.join("\n\n")
+  end
+
+  def add_card(new_card)
+    @cards.push(new_card)
+  end
+
+  def remove_card(card_to_remove)
+
+    for card in @cards
+      value_matches = card.value == card_to_remove.value
+      suit_matches = card.suit == card_to_remove.suit
+      if value_matches && suit_matches
+        @cards.delete(card)
+        return true
+      end
+    end
+
+    return false
   end
 
 end
