@@ -1,10 +1,9 @@
 class String
   # colorization
   def colorize(text, background, bold=false)
-    if bold
-      "\e[1;#{text};#{background}m#{self}\e[0m"
-    else
-      "\e[#{text};#{background}m#{self}\e[0m"
-    end
+    bold_modifier = ''
+    bold_modifier = '1;' if bold
+
+    return "\e[#{bold_modifier}#{text};#{background}m#{self}\e[0m"
   end
 end
