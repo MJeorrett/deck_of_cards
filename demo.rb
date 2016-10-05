@@ -26,8 +26,10 @@ card_count = gets.chomp.to_i
 hands = deck.deal_hands(hand_count, card_count)
 
 puts "Here are your hands"
+puts
 
 for hand_number in (1..hand_count)
   puts "hand #{hand_number}:"
   puts hands[hand_number - 1].to_bash_coloured_string
+  puts
 end
