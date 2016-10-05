@@ -79,4 +79,14 @@ class Deck
     return hands
   end
 
+  def to_s ()
+    @cards.join(", ")
+  end
+
+  def to_bash_coloured_string()
+    @cards.map { |card|
+      card.to_bash_coloured_string
+    }.join("\n")
+  end
+
 end

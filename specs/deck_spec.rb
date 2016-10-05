@@ -103,6 +103,5 @@ class TestDeck < MiniTest::Test
     for hand_index in (0..2)
       assert_equal(4, hands[hand_index].number_of_cards)
     end
-    hands.each { |hand| puts hand.to_bash_coloured_string;  puts "---"}
   end
 end
