@@ -23,6 +23,8 @@ class Card
 
   BACKGROUND_COLOUR = 107
 
+  CARD_WIDTH = "Queen x".length + 2
+
   attr_reader(:value, :suit)
 
   def initialize(value, suit)
@@ -33,7 +35,11 @@ class Card
   def to_bash_coloured_string()
     suit_colour = SUIT_DATA[@suit][:colour]
     suit_symbol = SUIT_DATA[@suit][:symbol]
-    return @value.colorize(suit_colour, BACKGROUND_COLOUR, true) + " ".colorize(30, BACKGROUND_COLOUR) + suit_symbol.colorize(suit_colour, BACKGROUND_COLOUR, true)
+
+    formatted_string = (@value + " " + suit_symbol).center(CARD_WIDTH).colorize(suit_colour, BACKGROUND_COLOUR, true)
+
+    return formatted_string
+
   end
 
   def to_s()
