@@ -40,13 +40,7 @@ class Deck
   end
 
   def shuffle()
-    shuffled_cards = []
-    while @cards.length > 0
-      card = @cards.sample
-      shuffled_cards.push(card)
-      @cards.delete(card)
-    end
-    @cards = shuffled_cards
+    @cards.shuffle!()
   end
 
   def number_of_cards_remaining()
@@ -54,9 +48,11 @@ class Deck
   end
 
   def deal_card()
+
     return @cards.shift()
   end
 
+  # returns an array of the keys in the 'VALUES' hash ordered by the values.
   def get_ordered_values()
     return VALUES.to_a.map { |pair|
       pair.reverse
@@ -66,6 +62,7 @@ class Deck
   end
 
   def deal_hands(hand_count, card_count)
+
     hands = []
     hand_count.times do
       hands.push(Hand.new([]))
@@ -73,7 +70,7 @@ class Deck
 
     card_count.times do
       for hand in hands
-        hand.add_card(deal_card)
+        hand.add_card(deal_card())
       end
     end
     return hands
