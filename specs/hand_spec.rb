@@ -37,7 +37,6 @@ class TestHand < MiniTest::Test
     @hand.add_card(new_card)
     assert(@hand.has_card('9', 'Spades'))
     assert_equal(4, @hand.number_of_cards)
-    puts @hand.to_bash_coloured_string
   end
 
   def test_remove_card_when_hand_has_card()

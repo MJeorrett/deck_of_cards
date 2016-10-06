@@ -36,10 +36,8 @@ class Card
     suit_colour = SUIT_DATA[@suit][:colour]
     suit_symbol = SUIT_DATA[@suit][:symbol]
 
-    formatted_string = (@value + " " + suit_symbol).center(CARD_WIDTH).colorize(suit_colour, BACKGROUND_COLOUR, true)
-
-    return formatted_string
-
+    formatted_string = (@value + " " + suit_symbol).center(CARD_WIDTH)
+    return formatted_string.colourise(suit_colour, BACKGROUND_COLOUR, true)
   end
 
   def to_s()
